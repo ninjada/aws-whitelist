@@ -1,13 +1,13 @@
 # aws-whitelist
-Two part script to obtain latest AWS IP-Ranges which is in .json form:
+Script to obtain latest AWS IP-Ranges which is in .json form and sort into IPtables commands to whitelist AWS ranges:
 
 https://aws.amazon.com/blogs/aws/aws-ip-ranges-json/
 https://ip-ranges.amazonaws.com/ip-ranges.json
 
-aws-ip-range.py obtains ip-ranges.json, outputs all included ranges in IP/CIDR format as part of iptables command to whitelist the range.
+The aws-ip-range.py script obtains the latest amazon ip-ranges.json, loops through all included ranges and outputs the IP/CIDR in format of iptables command to whitelist the range. In my case, to whitelist a specific port to receive AWS SNS notifications on a specific server.
 
-NOTE: have added if statement to filter only specific ranges, eg. ap-southeast-2. Remove or alter for your needs.
+NOTE: I require an if statement to filter only specific ranges, eg. ap-southeast-2. Remove or alter for your needs.
 
-iptables-whitelist.sh runs the python script, flushes iptables and then runs the list of iptables commands to whitelist.
+The iptables-whitelist.sh script runs the python script, flushes iptables and then runs the list of iptables commands to whitelist. I run this daily for my needs.
 
 TO DO: it would be neat to have python check the ip-ranges.json date and only pull down if it is newer. Also would be nice to have entire thing done in one script.
