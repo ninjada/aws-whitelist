@@ -12,7 +12,9 @@ for line in ranges:
     if "{" in line:
         obj = {}
     elif "}" in line:
+      # filter everything except specific region: ap-southeast-2
       if obj["region"] == "ap-southeast-2":
+        # create iptables rule command
         iprule = "iptables -I INPUT -s " + obj["ip_prefix"] + " -p " + "tcp" + " --dport " + "8080" + " -j ACCEPT\n"
         fp1.write(iprule)
       else:
