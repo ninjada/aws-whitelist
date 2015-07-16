@@ -12,4 +12,4 @@ In my case, I use this to whitelist a port 8080 to receive SNS notifications but
 
 The iptables-whitelist.sh script runs the python script, flushes iptables and then runs the list of iptables commands to whitelist. I run this daily for my needs.
 
-TO DO: it would be neat to have python check the ip-ranges.json date and only pull down if it is newer. Also would be nice to have entire thing done in one script.
+***TO DO***: it would be neat to have python check the ip-ranges.json date and only pull down if it is newer. Also would be nice to have entire thing done in one script.
